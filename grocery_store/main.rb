@@ -4,12 +4,13 @@ Items = [{ name: "Apples", cost: 10},{name: "Oranges", cost: 20},{name: "Bananas
 
 
 def menu
-    puts "******** MAIN MENU ***********"
+    puts "              ******************************* MAIN MENU *******************************           "
     puts "1. Show Grocery List"
     puts "2. Display Cart"
     puts "3. Show Total"
     puts "4. Remove Last Item Cast"
     puts "5. Exit the store"
+    puts "    ** Select one of the above options **    "
     main_menu_choice
 end
 
@@ -29,7 +30,7 @@ def main_menu_choice
       call_pop
       show_list
     elsif menu_choice === 5
-        puts "**** Exiting the Store ****"
+        puts "              ******************************* LEAVING STORE *******************************           "
         exit
     else
       puts "not valid choice, try again"
@@ -38,7 +39,7 @@ def main_menu_choice
 end
 
 def items_show
-    puts "******** FOOD MENU ***********"
+    puts "              ******************************* FOOD MENU *******************************           "
     puts "1. Add Apples"
     puts "2. Add Oranges"
     puts "3. Add Bananas"
@@ -61,7 +62,7 @@ def item_menu_choice
         @@price += Items[item_choice-1][:cost]
         items_show
     elsif item_choice === 4
-      puts "** Going back to Main Menu **"
+      puts "    ** Going back to the Main Menu **    "
       menu
     else
         puts "not valid choice, try again"
