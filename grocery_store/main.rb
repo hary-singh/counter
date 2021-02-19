@@ -1,4 +1,4 @@
-Price = 0; 
+@@price = 0; 
 
 Items = [{ name: "Apples", cost: 10},{name: "Oranges", cost: 20},{name: "Bananas", cost: 5}]
 
@@ -22,7 +22,7 @@ def main_menu_choice
       puts "Showing Cart: "
       show_cart
     elsif menu_choice === 3
-        puts "Total Price: #{Price}"
+        puts "Total Price: #{@@price}"
         menu
     elsif menu_choice === 4
       puts "**Removing Last Item**"
@@ -50,15 +50,15 @@ def item_menu_choice
     item_choice = gets.chomp.to_i
     if item_choice === 1
       puts "*** 1 Apple added to Cart ***"
-      Price + = Items[item_choice-1][:cost]
+      @@price += Items[item_choice-1][:cost]
       items_show
     elsif item_choice === 2
       puts "*** 1 Orange added to Cart ***"
-      Price + = Items[item_choice-1][:cost]
+      @@price += Items[item_choice-1][:cost]
       items_show
     elsif item_choice === 3
         puts "*** 1 Banana added to Cart ***"
-        Price + = Items[item_choice-1][:cost]
+        @@price += Items[item_choice-1][:cost]
         items_show
     elsif item_choice === 4
       puts "** Going back to Main Menu **"
