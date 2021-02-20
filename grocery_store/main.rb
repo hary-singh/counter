@@ -56,28 +56,39 @@ end
 def item_menu_choice
     basket = {}
     item_choice = gets.chomp
-    if item_choice == 1
-      puts "    ****************************** 1 Apple added to Cart ******************************    "
-      @price += @items[item_choice-1][:cost]
-      basket[:name] = @items[item_choice-1][:name]
-      basket[:cost] = @items[item_choice-1][:cost]
+    if item_choice <= (@items.length).to_s
+      puts "    ****************************** 1 Item added to Cart ******************************    "
+      @price += @items[(item_choice).to_i-1][:cost]
+      basket[:name] = @items[(item_choice).to_i-1][:name]
+      basket[:cost] = @items[(item_choice).to_i-1][:cost]
       basket[:key] = @cart.length + 1
       @cart << basket
       items_show
-    elsif item_choice == 2
-      puts "    ****************************** 1 Orange added to Cart ******************************    "
-      @price += @items[item_choice-1][:cost]
-      basket[:name] = @items[item_choice-1][:name]
-      basket[:cost] = @items[item_choice-1][:cost]
-      @cart << basket
-      items_show
-    elsif item_choice == 3
-        puts "    ****************************** 1 Banana added to Cart ******************************    "
-        @price += @items[item_choice-1][:cost]
-        basket[:name] = @items[item_choice-1][:name]
-        basket[:cost] = @items[item_choice-1][:cost]
-        @cart << basket
-        items_show
+    
+    
+    
+    # if item_choice == 1
+    #   puts "    ****************************** 1 Apple added to Cart ******************************    "
+    #   @price += @items[item_choice-1][:cost]
+    #   basket[:name] = @items[item_choice-1][:name]
+    #   basket[:cost] = @items[item_choice-1][:cost]
+    #   basket[:key] = @cart.length + 1
+    #   @cart << basket
+    #   items_show
+    # elsif item_choice == 2
+    #   puts "    ****************************** 1 Orange added to Cart ******************************    "
+    #   @price += @items[item_choice-1][:cost]
+    #   basket[:name] = @items[item_choice-1][:name]
+    #   basket[:cost] = @items[item_choice-1][:cost]
+    #   @cart << basket
+    #   items_show
+    # elsif item_choice == 3
+    #     puts "    ****************************** 1 Banana added to Cart ******************************    "
+    #     @price += @items[item_choice-1][:cost]
+    #     basket[:name] = @items[item_choice-1][:name]
+    #     basket[:cost] = @items[item_choice-1][:cost]
+    #     @cart << basket
+    #     items_show
 
       elsif item_choice == 'A' || item_choice == 'a'
         puts "    ** Adding items to the main list **    "
