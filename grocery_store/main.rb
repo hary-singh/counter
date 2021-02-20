@@ -1,14 +1,15 @@
-@@price = 0; 
+@price = 0; 
 
-Items = [{ name: "Apples", cost: 10},{name: "Oranges", cost: 20},{name: "Bananas", cost: 5}]
+@items = [{ name: "Apples", cost: 10},{name: "Oranges", cost: 20},{name: "Bananas", cost: 5}]
 
+@cart = []
 
 def menu
     puts "              ******************************* MAIN MENU *******************************           "
     puts "1. Show Grocery List"
     puts "2. Display Cart"
     puts "3. Show Total"
-    puts "4. Remove Last Item Cast"
+    puts "4. Remove Last Item from the cart"
     puts "5. Exit the store"
     puts "    ** Select one of the above options **    "
     main_menu_choice
@@ -23,14 +24,14 @@ def main_menu_choice
       puts "Showing Cart: "
       show_cart
     elsif menu_choice === 3
-        puts "Total Price: #{@@price}"
+        puts "Total Price: #{@price}"
         menu
     elsif menu_choice === 4
       puts "**Removing Last Item**"
       call_pop
       show_list
     elsif menu_choice === 5
-        puts "              ******************************* LEAVING STORE *******************************           "
+        puts "              ***************** LEAVING STORE ******************           "
         exit
     else
       puts "not valid choice, try again"
@@ -39,10 +40,10 @@ def main_menu_choice
 end
 
 def items_show
-    puts "              ******************************* FOOD MENU *******************************           "
-    puts "1. Add Apples"
-    puts "2. Add Oranges"
-    puts "3. Add Bananas"
+    puts "              ***************** FOOD MENU ******************           "
+    puts "1. Add 1 Apple to your cart"
+    puts "2. Add 1 Orange to your cart"
+    puts "3. Add 1 Banana to your cart"
     puts "4. Go back to Main Menu"
     item_menu_choice
 end
@@ -50,16 +51,16 @@ end
 def item_menu_choice
     item_choice = gets.chomp.to_i
     if item_choice === 1
-      puts "*** 1 Apple added to Cart ***"
-      @@price += Items[item_choice-1][:cost]
+      puts "    ****************************** 1 Apple added to Cart ******************************    "
+      @price += @items[item_choice-1][:cost]
       items_show
     elsif item_choice === 2
       puts "*** 1 Orange added to Cart ***"
-      @@price += Items[item_choice-1][:cost]
+      @price += @items[item_choice-1][:cost]
       items_show
     elsif item_choice === 3
         puts "*** 1 Banana added to Cart ***"
-        @@price += Items[item_choice-1][:cost]
+        @price += @items[item_choice-1][:cost]
         items_show
     elsif item_choice === 4
       puts "    ** Going back to the Main Menu **    "
@@ -74,8 +75,8 @@ end
 
 
 def show_list
-    Items.each do |item|
-        p item
+    @items.each do |item, index|
+        puts " #{item[:name]} -- $ #{item[:cost]}"
     end
     items_show
 end
