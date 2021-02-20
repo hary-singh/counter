@@ -1,6 +1,6 @@
 @price = 0; 
 
-@items = [{ name: "Apples", cost: 10},{name: "Oranges", cost: 20},{name: "Bananas", cost: 5}]
+@items = [{ name: "Apple", cost: 10},{name: "Orange", cost: 20},{name: "Banana", cost: 5}]
 
 @cart = []
 
@@ -53,14 +53,17 @@ def item_menu_choice
     if item_choice === 1
       puts "    ****************************** 1 Apple added to Cart ******************************    "
       @price += @items[item_choice-1][:cost]
+      @cart << @items[item_choice-1][:name]
       items_show
     elsif item_choice === 2
       puts "*** 1 Orange added to Cart ***"
       @price += @items[item_choice-1][:cost]
+      @cart << @items[item_choice-1][:name]
       items_show
     elsif item_choice === 3
         puts "*** 1 Banana added to Cart ***"
         @price += @items[item_choice-1][:cost]
+        @cart << @items[item_choice-1][:name]
         items_show
     elsif item_choice === 4
       puts "    ** Going back to the Main Menu **    "
@@ -84,7 +87,10 @@ end
 
 
 def show_cart
-    puts "show cart -test"
+    @cart.each do |item|
+      puts " #{item}"
+    end
+
     menu
 end
 
