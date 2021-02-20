@@ -19,6 +19,7 @@ def main_menu_choice
     menu_choice = gets.chomp.to_i
     if menu_choice === 1
       show_list
+      items_show
     elsif menu_choice === 2
       show_cart
     elsif menu_choice === 3
@@ -93,17 +94,15 @@ def show_list
     @items.each do |item, index|
         puts " #{item[:name]} -- $ #{item[:cost]}"
     end
-    items_show
 end
 
 
 
 def show_cart
-  puts "Showing Cart: "
+  puts "    ****************************** Showing Cart ******************************    "
     @cart.each do |item|
       puts " #{item}"
     end
-
     menu
 end
 
