@@ -13,7 +13,8 @@ def menu
     puts "4. Remove Last Item from the cart"
     puts "5. Select an item to remove from cart"
     puts "6. Check the amount of funds remaining"
-    puts "7. Exit the store"
+    puts "7. Proceed to Checkout"
+    puts "8. Exit the store"
     puts "    ** Select one of the above options **    "
     main_menu_choice
 end
@@ -42,6 +43,9 @@ def main_menu_choice
       puts "Total amount of Funds remaining: $#{@budget}"
       menu
     elsif menu_choice === 7
+      checkout
+      menu
+    elsif menu_choice === 8
         puts "    ****************************** Leaving Store ******************************    "
         exit
     else
@@ -129,6 +133,19 @@ def select_delete_from_cart
   temp_cost = @cart[row_number-1][:cost]
   @price -= temp_cost
   @cart.delete_at(row_number-1)
+end
+
+def checkout
+  if @budget >= @price
+    @budget -= @price
+    @price = 0
+    puts " Your items have been checked out and cart has been cleared. Thank you for shopping with us!"
+    puts " Total amount of Funds remaining: $#{@budget}"
+    @cart.clear()
+  else
+    puts " Your total price is more than your budget. Please remove some items from your cart!"
+    menu
+  end
 end
 
 
