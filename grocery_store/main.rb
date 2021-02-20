@@ -10,7 +10,8 @@ def menu
     puts "2. Display Cart"
     puts "3. Show Total"
     puts "4. Remove Last Item from the cart"
-    puts "5. Exit the store"
+    puts "5. Select an item to remove from cart"
+    puts "6. Exit the store"
     puts "    ** Select one of the above options **    "
     main_menu_choice
 end
@@ -28,7 +29,7 @@ def main_menu_choice
     elsif menu_choice === 4
       call_pop
       show_list
-    elsif menu_choice === 5
+    elsif menu_choice === 6
         puts "    ****************************** Leaving Store ******************************    "
         exit
     else
@@ -124,5 +125,12 @@ def add_to_items
 
 end
 
+
+
+
+@budget = 0
+print " What is your budget? : "
+@budget  = gets.to_i
+puts " $ #{@budget}" 
 
 menu
