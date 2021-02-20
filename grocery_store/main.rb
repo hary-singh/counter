@@ -1,4 +1,5 @@
 @price = 0; 
+@budget = 0
 
 @items = [{ key: 1, name: "Apple", cost: 10},{ key: 2, name: "Orange", cost: 20},{ key: 3, name: "Banana", cost: 5}]
 
@@ -11,7 +12,8 @@ def menu
     puts "3. Show Total"
     puts "4. Remove Last Item from the cart"
     puts "5. Select an item to remove from cart"
-    puts "6. Exit the store"
+    puts "6. Check the amount of funds remaining"
+    puts "7. Exit the store"
     puts "    ** Select one of the above options **    "
     main_menu_choice
 end
@@ -25,7 +27,7 @@ def main_menu_choice
       show_cart
       menu
     elsif menu_choice === 3
-        puts "Total Price: #{@price}"
+        puts "Total Price: $#{@price}"
         menu
     elsif menu_choice === 4
       call_pop
@@ -37,10 +39,13 @@ def main_menu_choice
       show_cart
       menu
     elsif menu_choice === 6
+      puts "Total amount of Funds remaining: $#{@budget}"
+      menu
+    elsif menu_choice === 7
         puts "    ****************************** Leaving Store ******************************    "
         exit
     else
-      puts "not valid choice, try again"
+      puts "  !!!!! INVALID CHOICE, PLEASE TRY AGAIN  !!!!!"
       menu
     end
 end
@@ -64,32 +69,6 @@ def item_menu_choice
       basket[:key] = @cart.length + 1
       @cart << basket
       items_show
-    
-    
-    
-    # if item_choice == 1
-    #   puts "    ****************************** 1 Apple added to Cart ******************************    "
-    #   @price += @items[item_choice-1][:cost]
-    #   basket[:name] = @items[item_choice-1][:name]
-    #   basket[:cost] = @items[item_choice-1][:cost]
-    #   basket[:key] = @cart.length + 1
-    #   @cart << basket
-    #   items_show
-    # elsif item_choice == 2
-    #   puts "    ****************************** 1 Orange added to Cart ******************************    "
-    #   @price += @items[item_choice-1][:cost]
-    #   basket[:name] = @items[item_choice-1][:name]
-    #   basket[:cost] = @items[item_choice-1][:cost]
-    #   @cart << basket
-    #   items_show
-    # elsif item_choice == 3
-    #     puts "    ****************************** 1 Banana added to Cart ******************************    "
-    #     @price += @items[item_choice-1][:cost]
-    #     basket[:name] = @items[item_choice-1][:name]
-    #     basket[:cost] = @items[item_choice-1][:cost]
-    #     @cart << basket
-    #     items_show
-
       elsif item_choice == 'A' || item_choice == 'a'
         puts "    ** Adding items to the main list **    "
         add_to_items
@@ -100,7 +79,7 @@ def item_menu_choice
       puts "    ** Going back to the Main Menu **    "
       menu
     else
-        puts "not valid choice, try again"
+        puts "  !!!!! INVALID CHOICE, PLEASE TRY AGAIN  !!!!!"
         item_menu_choice
     end
 
@@ -153,9 +132,7 @@ def select_delete_from_cart
 end
 
 
-# @budget = 0
-# print " What is your budget? : "
-# @budget  = gets.chomp.to_i
-# puts " $ #{@budget}" 
+print " What is your budget? : "
+@budget  = gets.chomp.to_i
 
 menu
