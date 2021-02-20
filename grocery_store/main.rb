@@ -28,7 +28,7 @@ def main_menu_choice
       call_pop
       show_list
     elsif menu_choice === 5
-        puts "              ***************** LEAVING STORE ******************           "
+        puts "    ****************************** Leaving Store ******************************    "
         exit
     else
       puts "not valid choice, try again"
@@ -41,7 +41,8 @@ def items_show
     puts "1. Add 1 Apple to your cart"
     puts "2. Add 1 Orange to your cart"
     puts "3. Add 1 Banana to your cart"
-    puts "4. Go back to Main Menu"
+    puts "4. Add items to the main list"
+    puts "5. Go back to Main Menu"
     item_menu_choice
 end
 
@@ -69,7 +70,13 @@ def item_menu_choice
         basket[:cost] = @items[item_choice-1][:cost]
         @cart << basket
         items_show
-    elsif item_choice === 4
+
+      elsif item_choice === 4
+        puts "    ** Adding items to the main list **    "
+        add_to_items
+        menu
+
+    elsif item_choice === 5
       puts "    ** Going back to the Main Menu **    "
       menu
     else
@@ -103,10 +110,19 @@ end
 
 
 def call_pop
-  puts "**Removing Last Item**"
+    temp_cost = 0
+    puts "**Removing Last Item**"
+    temp_cost = @cart[@cart.length-1][:cost]
     @cart.pop()
+    @price -= temp_cost
     show_cart
     menu
+end
+
+def add_to_items
+  puts " Select what items you want to add: "
+  show_list
+
 end
 
 
