@@ -23,12 +23,19 @@ def main_menu_choice
       items_show
     elsif menu_choice === 2
       show_cart
+      menu
     elsif menu_choice === 3
         puts "Total Price: #{@price}"
         menu
     elsif menu_choice === 4
       call_pop
       show_list
+      menu
+    elsif menu_choice === 5
+      show_cart
+      select_delete_from_cart
+      show_cart
+      menu
     elsif menu_choice === 6
         puts "    ****************************** Leaving Store ******************************    "
         exit
@@ -88,26 +95,20 @@ def item_menu_choice
 
 end
 
-
-
 def show_list
   puts "Showing List below:"
     @items.each do |item, index|
-        puts " #{item[:name]} -- $ #{item[:cost]}"
+        puts "  #{item[:name]} -- $ #{item[:cost]}" 
     end
 end
-
-
 
 def show_cart
   puts "    ****************************** Showing Cart ******************************    "
     @cart.each do |item|
       puts " #{item}"
     end
-    menu
+    
 end
-
-
 
 def call_pop
     temp_cost = 0
@@ -125,7 +126,15 @@ def add_to_items
 
 end
 
-
+def select_delete_from_cart
+  row_number = 0  
+  temp_cost = 0
+  print " Enter row number to delete:  "
+  row_number = gets.to_i
+  temp_cost = @cart[row_number-1][:cost]
+  @price -= temp_cost
+  @cart.delete_at(row_number-1)
+end
 
 
 @budget = 0
