@@ -1,4 +1,5 @@
 @price = 0; 
+@final_amt = 0;
 @budget = 0
 
 @items = [{ key: 1, name: "Apple", cost: 10},{ key: 2, name: "Orange", cost: 20},{ key: 3, name: "Banana", cost: 5}]
@@ -28,7 +29,7 @@ def main_menu_choice
       show_cart
       menu
     elsif menu_choice === 3
-        puts "Total Price: $#{@price}"
+        show_total
         menu
     elsif menu_choice === 4
       call_pop
@@ -43,6 +44,7 @@ def main_menu_choice
       puts "Total amount of Funds remaining: $#{@budget}"
       menu
     elsif menu_choice === 7
+      show_total
       checkout
       menu
     elsif menu_choice === 8
@@ -136,9 +138,10 @@ def select_delete_from_cart
 end
 
 def checkout
-  if @budget >= @price
-    @budget -= @price
+  if @budget >= @final_amt
+    @budget -= @final_amt
     @price = 0
+    @final_amt = 0
     puts " Your items have been checked out and cart has been cleared. Thank you for shopping with us!"
     puts " Total amount of Funds remaining: $#{@budget}"
     @cart.clear()
@@ -147,6 +150,15 @@ def checkout
     menu
   end
 end
+
+def show_total
+  taxes = @price * 0.10
+  puts " Cost of items : $#{@price}"
+  puts " Taxes         : $#{taxes}"
+  @final_amt = @price + taxes
+  puts " Total Cost    : $#{@final_amt}"
+end
+
 
 
 print " What is your budget? : "
