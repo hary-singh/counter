@@ -11,7 +11,7 @@ def menu
     puts "1. Show Grocery List"
     puts "2. Display Cart"
     puts "3. Show Total"
-    puts "4. Remove Last Item from the cart"
+    puts "4. Quick remove last item from the cart"
     puts "5. Select an item to remove from cart"
     puts "6. Check the amount of funds remaining"
     puts "7. Proceed to Checkout"
