@@ -1,7 +1,7 @@
 @price = 0; 
 @final_amt = 0;
 @budget = 0
-
+@purchase_history = []
 @items = [{ key: 1, name: "Apple", cost: 10},{ key: 2, name: "Orange", cost: 20},{ key: 3, name: "Banana", cost: 5}]
 
 @cart = []
@@ -15,7 +15,8 @@ def menu
     puts "5. Select an item to remove from cart"
     puts "6. Check the amount of funds remaining"
     puts "7. Proceed to Checkout"
-    puts "8. Exit the store"
+    puts "8. View Purchase history this session"
+    puts "9. Exit the store"
     puts "    ** Select one of the above options **    "
     main_menu_choice
 end
@@ -48,6 +49,9 @@ def main_menu_choice
       checkout
       menu
     elsif menu_choice === 8
+      view_history
+      menu
+    elsif menu_choice === 9
         puts "    ****************************** Leaving Store ******************************    "
         exit
     else
@@ -144,6 +148,21 @@ def checkout
     @final_amt = 0
     puts " Your items have been checked out and cart has been cleared. Thank you for shopping with us!"
     puts " Total amount of Funds remaining: $#{@budget}"
+    
+    # @cart.each do |data|
+    #   @purchase_history = { key: data[:key].to_i, name: data[:name], cost: data[:cost].to_i}
+    # end
+    # @purchase_history << @cart
+    @purchase_history = @cart.dup
+
+    # temp ={}
+    # @cart.each do |item, index|
+    #   temp[:key] = (item[:key]).to_i
+    #   temp[:name] = @item[:name]
+    #   temp[:cost] = (@item[:cost]).to_i
+    #   @purchase_history << temp
+    # end
+
     @cart.clear()
   else
     puts " Your total price is more than your budget. Please remove some items from your cart!"
@@ -159,6 +178,14 @@ def show_total
   puts " Total Cost    : $#{@final_amt}"
 end
 
+def view_history
+  puts "    ****************************** Purchase History ******************************    "
+  
+  @purchase_history.each do |item, index|
+    # puts item
+    puts " #{item[:key]}. #{item[:name]} -- $ #{item[:cost]}"
+  end
+end
 
 
 print " What is your budget? : "
