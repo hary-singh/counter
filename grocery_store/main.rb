@@ -153,7 +153,7 @@ def checkout
     #   @purchase_history = { key: data[:key].to_i, name: data[:name], cost: data[:cost].to_i}
     # end
     # @purchase_history << @cart
-    @purchase_history = @cart.dup
+    @purchase_history += @cart.dup
 
     # temp ={}
     # @cart.each do |item, index|
