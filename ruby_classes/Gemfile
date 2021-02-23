@@ -7,3 +7,6 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 # gem "rails"
 
 gem 'pry'
+
+##bundle init - create the gem file for us
+#bundle install - install the gems added to the file, run after adding new gems to the file
