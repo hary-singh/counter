@@ -1,5 +1,8 @@
 class Person
-    attr_accessor :name, :age
+    attr_accessor :name, :age   # able to set the values of name and age
+    # attr_writer :name, :age     # able to only write to the values
+    # attr_reader :name, :age     # able to only read to the values
+    # # you can only use one of these accesses to the values
 
     def initialize(name, age)
         @name = name
@@ -18,4 +21,3 @@ p bob.name
 p bob.age
 
 bob.add_age(10)
-p bob.age
