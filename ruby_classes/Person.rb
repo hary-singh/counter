@@ -1,3 +1,5 @@
+# require 'pry'
+require 'colorize'
 class Person
     attr_accessor :name, :age   # able to set the values of name and age
     # attr_writer :name, :age     # able to only write to the values
@@ -17,7 +19,8 @@ class Person
 end
 
 bob = Person.new("Bob", 30)
-p bob.name
+puts "#{bob.name}".colorize(:green)
+# binding.pry -- used for debugging
 p bob.age
 
 bob.add_age(10)
