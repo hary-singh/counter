@@ -131,14 +131,19 @@ def add_to_items
 
 end
 
-def select_delete_from_cart
-  row_number = 0  
-  temp_cost = 0
-  print " Enter row number to delete:  "
-  row_number = gets.to_i
-  temp_cost = @cart[row_number-1][:cost]
-  @price -= temp_cost
-  @cart.delete_at(row_number-1)
+def select_delete_from_cart 
+  
+  print " Enter row numbers to delete:  "
+  row_number = gets
+  rows = row_number.split(",")
+  rows.each do | row |
+    # puts "New Line: #{row}"
+    temp_cost = @cart[(row.to_i) - 1][:cost]
+    @price -= temp_cost
+    @cart.delete_at((row.to_i) - 1)
+  end
+
+  
 end
 
 def checkout
