@@ -188,3 +188,19 @@ VALUES (
          (SELECT id FROM cars ORDER BY RANDOM() LIMIT 1),
          true
        );
+
+SELECT p.name AS part_name, p.broken, p.serial_number, c.make, c.model
+FROM cars as c
+INNER JOIN parts AS p ON p.car_id = c.id
+-- drop
+DROP TABLE cars
+DROP DATABASE dealership_spring21
+-- alter 
+ALTER TABLE table_name
+ADD column_name datatype;
+
+ALTER TABLE table_name
+DROP COLUMN column_name;
+
+ALTER TABLE table_name
+ALTER COLUMN column_name datatype;
