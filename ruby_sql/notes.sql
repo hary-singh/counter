@@ -119,3 +119,72 @@ SELECT * FROM cars
 WHERE (cars.year > 2005 OR cars.make = 'Toyota' ) AND (cars.year > 2005 OR cars.make = 'Toyota' )
 SELECT * FROM cars
 WHERE NOT cars.year > 2005
+
+-- order by
+SELECT * FROM cars 
+ORDER BY cars.mileage 
+SELECT * FROM cars 
+ORDER BY cars.mileage DESC
+
+SELECT * FROM cars 
+ORDER BY cars.mileage DESC
+-- when updating and deleting be sure to include the item or condition
+UPDATE cars 
+SET runs = false 
+WHERE cars.id = 3
+DELETE FROM cars
+WHERE cars.make = 'Jeep'
+INSERT INTO cars (make, model, year, color, mileage) 
+VALUES ('Toyota', 'Coralla', 2017, 'falcon', 76000)
+-- Like 
+SELECT * FROM cars 
+WHERE cars.model LIKE 'F%'
+-- IN 
+SELECT * FROM cars 
+WHERE cars.make IN ('Ford', 'Toyota')
+-- between
+SELECT make, model, mileage FROM cars
+WHERE cars.mileage BETWEEN 30000 AND 100000;
+SELECT column_name AS alias_name
+FROM table_name; 
+SELECT make, model, year AS y, mileage
+FROM cars AS c
+WHERE c.mileage = 1000;
+-- JOINS
+CREATE TABLE parts (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  description VARCHAR(50),
+  serial_number BIGINT UNIQUE NOT NULL,
+  broken BOOLEAN DEFAULT false,
+  car_id INTEGER REFERENCES cars
+);
+INSERT INTO parts (name, description, serial_number, car_id, broken)
+VALUES (
+         'Hood Scoop', 
+         '10 More Horse Power', 
+         (SELECT floor(random()*(5341254321-1+1))+1), 
+         (SELECT id FROM cars ORDER BY RANDOM() LIMIT 1), 
+         DEFAULT
+       ),
+       (
+         'Spoiler', 
+         '50 More Horse Power', 
+         (SELECT floor(random()*(5341254321-1+1))+1), 
+         (SELECT id FROM cars ORDER BY RANDOM() LIMIT 1),
+         true
+       ),
+       (
+         'Rims And Tires', 
+         'Looks So Good!', 
+         (SELECT floor(random()*(5341254321-1+1))+1), 
+         (SELECT id FROM cars ORDER BY RANDOM() LIMIT 1),
+         DEFAULT
+       ),
+       (
+         'Lift Kit', 
+         'Climb Mountains!', 
+         (SELECT floor(random()*(5341254321-1+1))+1), 
+         (SELECT id FROM cars ORDER BY RANDOM() LIMIT 1),
+         true
+       );
