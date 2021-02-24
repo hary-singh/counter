@@ -148,21 +148,7 @@ def checkout
     @final_amt = 0
     puts " Your items have been checked out and cart has been cleared. Thank you for shopping with us!"
     puts " Total amount of Funds remaining: $#{@budget}"
-    
-    # @cart.each do |data|
-    #   @purchase_history = { key: data[:key].to_i, name: data[:name], cost: data[:cost].to_i}
-    # end
-    # @purchase_history << @cart
     @purchase_history += @cart.dup
-
-    # temp ={}
-    # @cart.each do |item, index|
-    #   temp[:key] = (item[:key]).to_i
-    #   temp[:name] = @item[:name]
-    #   temp[:cost] = (@item[:cost]).to_i
-    #   @purchase_history << temp
-    # end
-
     @cart.clear()
   else
     puts " Your total price is more than your budget. Please remove some items from your cart!"
