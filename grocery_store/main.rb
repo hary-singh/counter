@@ -137,7 +137,6 @@ def select_delete_from_cart
   row_number = gets
   rows = row_number.split(",")
   rows.each do | row |
-    # puts "New Line: #{row}"
     temp_cost = @cart[(row.to_i) - 1][:cost]
     @price -= temp_cost
     @cart.delete_at((row.to_i) - 1)
