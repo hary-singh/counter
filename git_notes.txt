@@ -1,0 +1,145 @@
+find ~/.ssh -name *id_rsa.pub*
+8:11
+ssh-keygen -t rsa -b 4096 -C "PUT YOUR EMAIL HERE"
+8:12
+pbcopy < ~/.ssh/id_rsa.pub
+8:16
+git config --global user.name "John Doe"
+8:17
+git config --global user.email "johndoe@example.com"
+8:17
+git config --global core.editor vim
+8:18
+touch ~/.gitignore
+8:19
+code ~/.gitignore
+8:19
+# Mac
+.DS_Store
+#VSCODE
+.vscode/
+8:20
+git config --global core.excludesfile ~/.gitignore
+
+Henry Doan:henry_doan:  6:15 PM
+mkdir git_practice
+6:17
+cd git_practice
+6:17
+git init
+6:19
+touch main.rb password.txt
+6:19
+git status
+6:20
+touch .gitignore
+6:21
+code .
+
+Henry Doan:henry_doan:  6:27 PM
+git add .
+6:27
+git commit -m 'created files'
+6:29
+git log
+6:31
+git log --oneline
+6:34
+def puts_git_info(cmd)
+  puts `git #{cmd} -h`
+  menu
+end
+def menu
+  puts '1. Enter git command'
+  puts '2. Exit'
+  choice = gets.strip.to_i
+  case choice
+  when 1
+    puts 'Enter git command'
+    puts_git_info(gets.strip)
+  when 2
+    exit
+  else
+    puts 'Invalid Choice, try 1 or 2'
+    menu
+  end
+end
+menu
+6:37
+https://www.vim.org/
+6:40
+git commit -m 'create menu and git helper'
+6:41
+ git commit --amend
+6:44
+bundle init
+6:44
+Gemfile
+gem "pry"
+gem "colorize"
+6:45
+bundle
+6:47
+main.rb
+require 'colorize'
+def puts_git_info(cmd)
+  puts `git #{cmd} -h`
+  menu
+end
+def menu
+  puts 'Main menu'.colorize(:cyan)
+  puts '1. Enter git command'.colorize(:green)
+  puts '2. Exit'.colorize(:red)
+  choice = gets.strip.to_i
+  case choice
+  when 1
+    puts 'Enter git command'.colorize(:yellow)
+    puts_git_info(gets.strip)
+  when 2
+    exit
+  else
+    puts 'Invalid Choice, try 1 or 2'.colorize(:error)
+    menu
+  end
+end
+menu
+6:47
+git add .
+6:48
+git commit -m 'add colorize gem'
+
+Henry Doan:henry_doan:  6:54 PM
+git remote add origin git@github.com:henry-doan/git_practice_sp21.git
+6:56
+git push origin master
+New
+7:00
+require 'colorize'
+def puts_git_info(cmd)
+  puts 'Your command:'
+  puts `git #{cmd} -h`
+  menu
+end
+def menu
+  puts 'Main menu'.colorize(:cyan)
+  puts '1. Enter git command'.colorize(:green)
+  puts '2. Exit'.colorize(:blue)
+  choice = gets.strip.to_i
+  case choice
+  when 1
+    puts 'Enter git command'.colorize(:yellow)
+    puts_git_info(gets.strip)
+  when 2
+    exit
+  else
+    puts 'Invalid Choice, try 1 or 2'.colorize(:error)
+    menu
+  end
+end
+menu
+7:00
+git add .
+7:00
+git commit -m 'added sentence and change color'
+7:00
+git push origin master
